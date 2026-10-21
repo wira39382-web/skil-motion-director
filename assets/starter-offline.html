@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Motion Director — offline motion study</title>
+<!-- Original Motion Director study; Bang Motion attribution and license in LICENSE. -->
+<style>
+*{box-sizing:border-box}body{margin:0;background:#171d28;color:#f2f0e8;font-family:system-ui,sans-serif;min-height:100vh;display:grid;place-items:center}#stage{width:1080px;height:1920px;position:fixed;left:50%;top:50%;overflow:hidden;transform-origin:center;background:#f2f0e8;color:#182b3b}svg{width:100%;height:100%;display:block}text{font-family:system-ui,sans-serif}#controls{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#182b3bf2;padding:12px;border-radius:14px;display:flex;align-items:center;gap:12px;max-width:95vw}button{background:#d1f468;border:0;border-radius:8px;padding:10px 14px;color:#182b3b;font-weight:700;cursor:pointer}input{width:min(32vw,220px)}button:focus-visible,input:focus-visible{outline:3px solid #f2f0e8}#clock{font-variant-numeric:tabular-nums;font-size:12px;white-space:nowrap}body.clean #controls{display:none}
+</style></head><body>
+<div id="stage"><svg viewBox="0 0 1080 1920" role="img" aria-label="Studi animasi ide menjadi komposisi visual. Tanpa suara, tanpa data faktual.">
+<defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#182b3b" stroke-opacity=".045"/></pattern></defs>
+<rect width="1080" height="1920" fill="url(#grid)"/>
+<text x="100" y="170" font-size="25" letter-spacing="5">MOTION DIRECTOR / STUDI 01</text><path d="M100 210H980" stroke="#182b3b"/>
+<g id="title"><text x="100" y="400" font-size="112" font-weight="800" letter-spacing="-6">Mulai dari</text><text x="100" y="525" font-size="112" font-weight="800" letter-spacing="-6" id="keyword">satu ide.</text></g>
+<g id="orbit"><circle cx="540" cy="1000" r="310" fill="none" stroke="#182b3b" stroke-opacity=".16"/><circle cx="540" cy="1000" r="240" fill="none" stroke="#182b3b" stroke-opacity=".1"/>
+<path id="connection" d="M260 820L810 890L650 1270Z" fill="none" stroke="#182b3b" stroke-width="3" stroke-dasharray="7 12"/>
+<g id="cardA"><rect x="135" y="690" width="300" height="250" rx="22" fill="#182b3b"/><text x="172" y="748" fill="#d1f468" font-size="24">01 / IDE</text><circle cx="285" cy="835" r="52" fill="#d1f468"/><path d="M285 760V780M285 890V910M210 835H230M340 835H360" stroke="#d1f468" stroke-width="5"/></g>
+<g id="cardB"><rect x="635" y="770" width="300" height="250" rx="22" fill="#d1f468"/><text x="672" y="828" font-size="24">02 / BENTUK</text><rect x="680" y="885" width="70" height="70" fill="#182b3b"/><circle cx="840" cy="920" r="40" fill="#182b3b"/></g>
+<g id="cardC"><rect x="390" y="1130" width="340" height="250" rx="22" fill="#d96b51"/><text x="427" y="1188" fill="#182b3b" font-size="24">03 / GERAK</text><path d="M435 1280H665M615 1230L665 1280L615 1330" stroke="#182b3b" stroke-width="14" fill="none"/></g></g>
+<g id="ending"><text x="100" y="1570" font-size="52" font-weight="650">Pesannya jelas.</text><text x="100" y="1640" font-size="52" font-weight="650">Geraknya punya alasan.</text></g>
+<path d="M100 1720H980" stroke="#182b3b"/><text x="100" y="1780" font-size="22">DEMO VISUAL / TANPA NARASI / 12 DETIK</text><rect x="100" y="1830" width="880" height="6" fill="#182b3b" opacity=".1"/><rect id="progress" x="100" y="1830" width="0" height="6" fill="#182b3b"/>
+</svg></div>
+<div id="controls" aria-label="Kontrol review"><button id="play" aria-label="Putar atau jeda">Putar</button><button id="restart">Ulang</button><input id="scrub" aria-label="Waktu animasi" type="range" min="0" max="12" step="0.01" value="0"><span id="clock">0.0 / 12 s</span></div>
+<script>
+const W=1080,H=1920,DURATION=12,$=id=>document.getElementById(id),clean=new URLSearchParams(location.search).has('clean'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let time=0,playing=false,last=null;const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)),ease=x=>1-Math.pow(1-clamp(x),3);
+function appear(id,t,start,dy=50){const k=ease((t-start)/.85);$(id).style.opacity=k;$(id).setAttribute('transform',`translate(0 ${(1-k)*(reduced?0:dy)})`);}
+function seek(t){time=clamp(Number(t)||0,0,DURATION);playing=false;last=null;paint();}
+function paint(){const t=time;appear('title',t,0);appear('cardA',t,.8);appear('cardB',t,2.5);appear('cardC',t,4.1);appear('ending',t,7.5);$('connection').style.opacity=ease((t-4.4)/1.5);const breath=reduced?0:Math.sin(t*.7)*9;$('orbit').setAttribute('transform',`translate(0 ${breath})`);$('progress').setAttribute('width',880*t/DURATION);$('scrub').value=t;$('clock').textContent=`${t.toFixed(1)} / 12 s`;$('play').textContent=playing?'Jeda':'Putar';}
+function play(){if(time>=DURATION)time=0;playing=true;last=null;paint();}function pause(){playing=false;last=null;paint();}
+function tick(now){if(playing){if(last!==null)time=Math.min(DURATION,time+(now-last)/1000);last=now;if(time>=DURATION)playing=false;paint();}requestAnimationFrame(tick);}requestAnimationFrame(tick);
+function fit(){const scale=Math.min(innerWidth/W,innerHeight/H);$('stage').style.transform=`translate(-50%,-50%) scale(${scale})`;}addEventListener('resize',fit);fit();
+$('play').onclick=()=>playing?pause():play();$('restart').onclick=()=>{seek(0);play();};$('scrub').oninput=e=>seek(e.target.value);addEventListener('keydown',e=>{if(e.code==='Space'&&!['INPUT','BUTTON'].includes(document.activeElement.tagName)){e.preventDefault();playing?pause():play();}});
+window.OPENER={W,H,DURATION,ready:true,seek,play,pause};if(clean)document.body.classList.add('clean');seek(0);
+</script></body></html>

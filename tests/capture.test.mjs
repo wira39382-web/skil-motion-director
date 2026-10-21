@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtemp,writeFile,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {dimensions,number,projectURL,freshDirectory} from '../scripts/lib/capture.mjs';
+test('portrait metadata is preserved',()=>assert.deepEqual(dimensions({W:1080,H:1920,DURATION:55}),{width:1080,height:1920,duration:55}));
+test('invalid timing/dimensions rejected',()=>{for(const x of [NaN,-1,Infinity,121])assert.throws(()=>number(x,'time',0,120));assert.throws(()=>dimensions({W:0,H:1920,DURATION:2}));});
+test('file path encodes spaces and forces clean mode',()=>{const u=new URL(projectURL('./a b.html'));assert.equal(u.protocol,'file:');assert.equal(u.searchParams.get('clean'),'1');assert.ok(u.pathname.endsWith('a%20b.html'));});
+test('preserves query and overrides clean',()=>{const u=new URL(projectURL('https://example.test/?debug=1&clean=0'));assert.equal(u.searchParams.get('clean'),'1');assert.equal(u.searchParams.get('debug'),'1');});
+test('nonempty output cannot mix stale frames',async()=>{const d=await mkdtemp(join(tmpdir(),'motion-test-'));try{await freshDirectory(d);await writeFile(join(d,'old.png'),'x');await assert.rejects(freshDirectory(d));}finally{await rm(d,{recursive:true,force:true});}});

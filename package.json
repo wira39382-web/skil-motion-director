@@ -1,0 +1,15 @@
+{
+  "name": "motion-director",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "doctor": "node scripts/doctor.mjs",
+    "snap": "node scripts/snap.mjs",
+    "frames": "node scripts/export-frames.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

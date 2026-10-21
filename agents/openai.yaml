@@ -1,0 +1,4 @@
+interface:
+  display_name: "Motion Director"
+  short_description: "Motion HTML dari ide singkat, dengan arahan kreatif"
+  default_prompt: "Gunakan $motion-director untuk membuat motion HTML dari topik ini; tentukan konsep visual yang kuat dan periksa hasilnya."
