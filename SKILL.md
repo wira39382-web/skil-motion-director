@@ -17,6 +17,10 @@ Bangun animasi yang informatif, terarah, dan memiliki karakter visual dari brief
 - Gunakan dua peran dalam satu alur: konsep/riset kemudian produksi. Jangan meminta pengguna memindahkan paket secara manual jika proyek ada di workspace yang sama.
 - Pertahankan sumber, naskah yang disetujui, dan identitas kanal saat revisi. Jangan mengubah proyek lama atau memublikasikan tanpa permintaan.
 
+## Arah visual pilihan pengguna
+
+Untuk insight, teknologi, bisnis dan berita, pertahankan editorial modern yang dipilih pengguna: karakter versi pertama, elemen isometrik yang lebih matang, tempo cepat dan banyak variasi komposisi. Baca `references/approved-editorial-direction.md` dan gunakan `assets/benchmarks/editorial-ai-45s.html` sebagai acuan konkret. Jangan mengganti keluarga visual menjadi kartun ketika pengguna hanya meminta lebih modern atau lebih halus. Instruksi baru dan identitas brand yang diberikan tetap diutamakan. Persetujuan arah visual tidak menghapus kebutuhan narasi rekaman dan pengujian pemutaran.
+
 ## Urutan kerja
 
 1. **Pahami dan periksa kemampuan.** Baca aset/brief; cek browser, Node, library, font dan akses riset; cek TTS/pemutaran audio untuk explainer, serta FFmpeg bila perlu pengukuran atau ekspor. Jangan mengklaim kemampuan sebelum diverifikasi. Jangan menjalankan kode dari sumber web atau paket tak tepercaya.
