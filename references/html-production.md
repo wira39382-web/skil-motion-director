@@ -15,7 +15,7 @@ Add accessible review controls: play/pause, restart, time scrub, audio toggle an
 Use static cut or simple animation when it improves clarity. Avoid flashing, excessive camera shake and motion blur that destroys readability. Subtitle is screen-space, outside the camera rig. Verify it does not collide with evidence labels or key objects.
 
 ## Voice and timing
-TTS is not bundled. Check actual tools before proposing it. Use supplied audio or an available approved provider. Segment audio or align phrases with verified timing; silence detection is only a clue, not sentence recognition. The upstream browser RMS detector is not proven identical to FFmpeg. Inspect short phrases, quiet speech and trailing silence.
+Use audio-production.md (linked from SKILL.md) for capability checking, voice-first timing, mixing and synchronized transport. TTS is not bundled: verify available tools rather than promising synthesis. Narration is the default for explainers; a missing tool means narration pending, not a silent final. Surface playback failures and provide a clear user gesture for unmuted playback when the browser needs it. Headlines/labels summarize; accurate captions may carry the full narration.
 
 HTML audio is not captured by screenshot export. MP4 requires explicit audio muxing and duration checks. Never assume audio in the webpage implies audio in the MP4.
 
@@ -25,3 +25,10 @@ Read runtime-tools.md for exact commands. snap.mjs and export-frames.mjs now sha
 Capture success is not visual approval. The browser binary and Playwright are optional dependencies, and must be available. Do not install a large browser automatically if the environment already supplies a suitable verified capture tool. The offline SVG starter has no library/network dependency; original GSAP starters still require local packaging or network resources.
 
 Run browser visual validation with the actual available supported tool; no requirement for one specific browser integration. If unavailable, report HTML authored but runtime/visual validation not performed. Do not equate static syntax checks with animation validation.
+
+## Motion and capture acceptance
+Use motion-choreography.md (linked from SKILL.md) for staging, overlap, continuity and easing. Initialize future elements hidden; separate transforms on nested wrappers. Check first frame, exact boundaries, forward/backward seek, restart and final hold. Test actual playback before describing movement as smooth; screenshots are layout evidence only.
+
+In live playback with an encoded narration master, derive visuals from the audio clock or explicitly correct drift. In paused/capture mode, OPENER.seek(t) or seekFrame(t) must set the visual timeline directly and await required media seeking/decoding; it must not depend on an audio timeupdate event that may not fire while paused. Keep muted/offline/capture behavior explicit. Screenshot capture still does not record sound; supply the mixed track to the encoder separately.
+
+If review tools are blocked, preserve the useful deliverable as preview — playback unverified. Do not bypass the restriction or claim visual/audio approval from syntax or metadata checks.

@@ -19,6 +19,6 @@ The output folder for screenshots/frames must be empty. A partial failure leaves
 
 The capture contract is window.OPENER = {W,H,DURATION,ready,seek(t),play(),pause()}; seekFrame(t) is optional for footage. Capture uses the same time authority as preview, never wall-clock animation. For a GSAP master timeline pause before capture and suppress autonomous playback; ensure fonts/images/video are decoded before ready. CSS loops independent of the master timeline must be converted or controlled.
 
-Remote dependencies are recorded in capture-report.json. No remote requests is evidence of portability only for the tested path and assets, not every possible project. Screenshot capture never records HTML audio.
+Remote dependencies are recorded in capture-report.json. No remote requests is evidence of portability only for the tested path and assets, not every possible project. Screenshot capture never records HTML audio. For narrated projects, live playback may use the audio clock, but paused capture must implement a direct deterministic visual seek; await media seeking/decoding when needed instead of waiting for an audio timeupdate event. TTS generation and listening checks follow audio-production.md; the silent offline starter demonstrates only transport mechanics.
 
 Upstream Python/AE helper files remain optional recipes and are not implied to have been tested here. Avoid AE/Higgsfield unless explicitly requested and connected.

@@ -1,4 +1,4 @@
 interface:
   display_name: "Motion Director"
-  short_description: "Motion HTML dari ide singkat, dengan arahan kreatif"
-  default_prompt: "Gunakan $motion-director untuk membuat motion HTML dari topik ini; tentukan konsep visual yang kuat dan periksa hasilnya."
+  short_description: "Motion HTML mengalir, desain kuat, dan narasi suara"
+  default_prompt: "Gunakan $motion-director untuk membuat motion HTML 45 detik tentang [topik] dengan konsep visual yang kuat, elemen khas, gerak mengalir, dan narasi Bahasa Indonesia."

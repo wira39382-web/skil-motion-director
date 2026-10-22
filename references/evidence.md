@@ -10,4 +10,4 @@ Use real data for charts and clear units/timeframes. Illustrative diagrams must 
 
 Check assets individually for origin, license and attribution. Publicly accessible does not mean freely reusable. Preserve user photos, logos and product geometry unless the requested edit changes them. Never promise availability of paid or connected services without checking.
 
-For factual narrative, show the script and evidence caveats before production unless that exact version is already approved. For a fictional motion demonstration, label it as such and avoid unnecessary factual research.
+For factual narrative, show a concise script/concept and material evidence caveats before production. Honor existing authorization: a direct request to create with delegated creative decisions permits proceeding with verified claims; do not add a routine approval stop. Ask only when unresolved substance, cost, rights or access actually requires a user decision. For a fictional motion demonstration, label it as such and avoid unnecessary factual research.

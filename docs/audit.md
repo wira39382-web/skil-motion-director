@@ -32,3 +32,16 @@
 5. Bila dependency dipasang, hasilkan dan commit lockfile; jangan mengklaim reproducibility instalasi hanya dari versi package.json.
 
 Tidak ada publikasi video, akun berbayar, TTS, atau koneksi After Effects yang dibuat.
+
+
+## Audit revisi 0.3.0 — 22 Oktober 2026
+
+- Gabungkan panduan gerak, audio, dan elemen visual terbaru dari skill terpasang ke repo; pertahankan alat capture/encoding dan tes yang sudah ada.
+- Tambahkan visual-assets.md, motion-choreography.md, dan audio-production.md sebagai rujukan langsung dari SKILL.md.
+- Hilangkan penurunan diam-diam ke video tanpa suara: default explainer bernarasi, capability check di awal, dan status pratinjau bila narasi belum tersedia.
+- Perjelas konstruksi objek utama, changed states, konsistensi medium/detail, variasi komposisi, kontinuitas, serta review close-up dan ukuran ponsel.
+- Betulkan petunjuk ekspor lama yang masih menyebut dimensi hardcoded; repo sudah mempunyai alat capture berbasis W/H proyek. Tidak mengubah implementasi alat pada revisi ini.
+- Bedakan jam pemutaran berbasis audio dari seek langsung saat capture; dokumentasikan kebutuhan menunggu media selesai seeking/decoding.
+- Bedakan headline/label ringkas dari subtitle lengkap agar aturan tidak bertentangan dengan aksesibilitas.
+- Selaraskan README dan metadata contoh prompt. Tidak menghapus starter, lisensi, atau alat yang sudah ada.
+- Uji brief terpisah memeriksa keputusan perencanaan, bukan mutu film. Validasi struktur/resource dan tes teknis dijalankan ulang; bukti pemutaran browser serta pendengaran narasi nyata tetap belum tersedia.
